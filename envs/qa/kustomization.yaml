@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+#refers to the base directory which contains the shared configuration
+
+bases:
+- ../../base
+
+#kustomization patch which will set debug environment variable in the deployment
+
+patchesStrategicMerge:
+- debug.yaml
+
+#overrides any container images defined in base with different tags or image repos 
+images:
+- name: nightmar39/basic-flask-docker
+  newTag: v1
+
+
+
